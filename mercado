@@ -1,0 +1,107 @@
+package com.example.aula1208;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+
+
+    private CheckBox sabao;
+    private CheckBox leite;
+    private CheckBox arroz;
+    private CheckBox queijo;
+    private CheckBox detergente;
+    private CheckBox refrigerante;
+    private EditText resposta;
+
+    private float resultado;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        sabao = findViewById(R.id.sabao);
+        leite = findViewById(R.id.leite);
+        arroz = findViewById(R.id.arroz);
+        queijo = findViewById(R.id.queijo);
+        detergente = findViewById(R.id.detergente);
+        refrigerante = findViewById(R.id.refrigerante);
+        resposta = findViewById(R.id.resposta);
+
+        sabao.setOnCheckedChangeListener(this);
+        leite.setOnCheckedChangeListener(this);
+        arroz.setOnCheckedChangeListener(this);
+        queijo.setOnCheckedChangeListener(this);
+        detergente.setOnCheckedChangeListener(this);
+        refrigerante.setOnCheckedChangeListener(this);
+    }
+       
+
+
+
+        @Override
+        public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
+
+        switch(buttonView.getId()){
+
+            case R.id.sabao:
+                if(isChecked){
+                    resultado += 3.45f;
+                }
+                else if(!isChecked){
+                    resultado -= 3.45f;
+                }
+                break;
+            case R.id.leite:
+                if(isChecked){
+                     resultado += 2.6f;
+                }
+                else if(!isChecked){
+                    resultado -= 2.6f;
+                }
+                break;
+            case R.id.arroz:
+                if(isChecked){
+                     resultado +=1.9f;
+                }
+                else if(!isChecked){
+                    resultado -= 1.9f;
+                }
+                break;
+            case R.id.queijo:
+                if(isChecked){
+                    r resultado +=7.22f;
+                }
+                else if(!isChecked){
+                    resultado -= 7.22f;
+                }
+                break;
+            case R.id.detergente:
+                if(isChecked){
+                     resultado += 2.29f;
+                }
+                else if(!isChecked){
+                    resultado -= 2.29f;
+                }
+                break;
+            case R.id.refrigerante:
+                if(isChecked){
+                    resultado += 2.59f;
+                }
+                else if(!isChecked){
+                    resultado -= 2.59f;
+                }
+                break;
+
+        }
+
+        }
+        public void calculo(View v){
+            resposta.setText("R$ " + resultado);
+        }
+		}
